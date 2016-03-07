@@ -11,34 +11,68 @@ import React, { Component, PropTypes } from 'react';
 import s from './LandingPage.scss';
 import withStyles from '../../decorators/withStyles';
 
+import playlistStore from '../../stores/playlistStore';
+import { saveItem } from '../../actions/playlistActions';
+
 const title = 'Landing Page';
 
-@withStyles(s)
-class LandingPage extends Component {
+@withStyles(s) class LandingPage extends Component {
 
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
-  };
+    static contextTypes = {
+        onSetTitle: PropTypes.func.isRequired,
+    };
 
-  componentWillMount() {
-    this.context.onSetTitle(title);
-  }
+    constructor(props) {
+        super(props);
+        this._onChange = this._onChange.bind(this);
+        this._save = this._save.bind(this);
+        this._catchEnter = this._catchEnter.bind(this);
+        this.state = {
+            text: '',
+        };
+    }
 
-  render() {
-    return (
-      <div className={s.root}>
-        <div className={s.banner}>
-          <h1 className={s.bannerTitle}>Collaborative Music PlayLists</h1>
-          <p className={s.bannerDesc}>Complex web apps made easy</p>
-        </div>
+    _onChange(event) {
+        this.setState({
+            text: event.target.value,
+        });
+    }
 
-        <div className={s.container}>
-          <h1>{title}</h1>
-          <p>...</p>
-        </div>
-      </div>
-    );
-  }
+    _save() {
+        saveItem(this.state.text);
+    }
+
+    _catchEnter(event) {
+        if (event.keyCode === 13) {
+            this._save();
+        }
+    }
+
+    render() {
+        return (
+            <div className={s.root}>
+                <div className={s.banner}>
+                    <h1 className={s.bannerTitle}>Collaborative Music playlistStore</h1>
+
+                    <p className={s.bannerDesc}>"All music is beautiful."</p>
+                </div>
+
+                <div className={s.container}>
+                    <h1>{title}</h1>
+
+                    <input
+                        type="text"
+                        value={this.state.text}
+                        onChange={this._onChange}
+                        onKeyDown={this._catchEnter}
+                        placeholder="Add new todo..."
+                        className="form-control"
+                        autoFocus="true"
+                        />
+                </div>
+            </div>
+        );
+    }
 
 }
 

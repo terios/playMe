@@ -24,10 +24,12 @@
 }
 
 .bannerTitle {
-  font-family: $font-family-banner;
+  font-family: $font-family-base;
   font-size: 70px;
+  font-weight: 100;
   color: #FFFFFF;
   line-height: 131px;
+  margin: 0.4em;
 }
 
 .bannerDesc {
