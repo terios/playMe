@@ -1,0 +1,20 @@
+{
+  "name": "playMe",
+  "version": "0.0.0",
+  "homepage": "https://github.com/terios/playMe",
+  "authors": [
+    "terios <anasyoubi@gmail.com>"
+  ],
+  "description": "simple social video player",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}

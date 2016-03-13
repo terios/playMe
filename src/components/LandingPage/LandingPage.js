@@ -11,6 +11,8 @@ import React, { Component, PropTypes } from 'react';
 import s from './LandingPage.scss';
 import withStyles from '../../decorators/withStyles';
 
+import SocialPlayer from '../SocialPlayer/SocialPlayer.js';
+
 import playlistStore from '../../stores/playlistStore';
 import { saveItem } from '../../actions/playlistActions';
 
@@ -34,7 +36,7 @@ const title = 'Landing Page';
 
     _onChange(event) {
         this.setState({
-            text: event.target.value,
+            text: event.target.value
         });
     }
 
@@ -69,6 +71,9 @@ const title = 'Landing Page';
                         className="form-control"
                         autoFocus="true"
                         />
+
+
+                    <SocialPlayer />
                 </div>
             </div>
         );
