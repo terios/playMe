@@ -74,6 +74,7 @@ const title = 'Landing Page';
 
 
                     <SocialPlayer />
+
                 </div>
             </div>
         );
