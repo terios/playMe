@@ -8,6 +8,7 @@
 import React, {Component} from 'react';
 
 import SocialVideo from '../SocialVideo/SocialVideo.js';
+import Playlist from '../Playlist/Playlist.js';
 
 import s from './SocialPlayer.scss';
 import withStyles from '../../decorators/withStyles';
@@ -37,12 +38,12 @@ import { saveItem } from '../../actions/playlistActions';
                 video: 'https://www.youtube.com/watch?v=XxVg_s8xAms'
             },
             {
-                service: 'vimeo',
-                video: 'https://vimeo.com/151715092'
+                service: 'youtube',
+                video: 'https://www.youtube.com/watch?v=FMlcn-_jpWY'
             },
             {
-                service: 'dailymotion',
-                video: 'http://www.dailymotion.com/video/x3oc771_la-voiture-du-futur_tech'
+                service: 'youtube',
+                video: 'https://www.youtube.com/watch?v=EgqUJOudrcM'
             }
         ];
 
@@ -72,47 +73,7 @@ import { saveItem } from '../../actions/playlistActions';
                         <SocialVideo service={service} video={video} className='uk-responsive-width uk-responsive-height' />
                     </div>
                 </div>
-
-                <div className={s.scrollableList + ' uk-width-large-3-10 uk-width-medium-1-1 uk-scrollable-box'}>
-                    <ul className="uk-list uk-list-space">
-                        <li>
-                            <div className="uk-clearfix">
-                                <img className={s.thumbnail + ' uk-thumbnail uk-thumbnail-mini uk-align-medium-left'} src="" alt=""/>
-                                <div class="uk-panel">
-                                    <h3 class="uk-panel-title">THE Title</h3>
-                                    duration / rating
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="uk-clearfix">
-                                <img className={s.thumbnail + ' uk-thumbnail uk-thumbnail-mini uk-align-medium-left'} src="" alt=""/>
-                                <div class="uk-panel">
-                                    <h3 class="uk-panel-title">THE Title</h3>
-                                    duration / rating
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="uk-clearfix">
-                                <img className={s.thumbnail + ' uk-thumbnail uk-thumbnail-mini uk-align-medium-left'} src="" alt=""/>
-                                <div class="uk-panel">
-                                    <h3 class="uk-panel-title">THE Title</h3>
-                                    duration / rating
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="uk-clearfix">
-                                <img className={s.thumbnail + ' uk-thumbnail uk-thumbnail-mini uk-align-medium-left'} src="" alt=""/>
-                                <div class="uk-panel">
-                                    <h3 class="uk-panel-title">THE Title</h3>
-                                    duration / rating
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <Playlist list={this.videos} />
                 <div className='uk-button-group'>
                     <button className='uk-button uk-button-primary' onClick={this.goToVideo.bind(this, this.state.videoIndex - 1)}>
                         Previous
